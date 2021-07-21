@@ -82,33 +82,16 @@ class ImageCarouselViewController:UIPageViewController, ImageViewerTransitionVie
     }
     
     private func addNavBar() {
-        // Add Navigation Bar
-        //        let closeBarButton = UIBarButtonItem(
-        //            title: NSLocalizedString("Close", comment: "Close button title"),
-        //            style: .plain,
-        //            target: self,
-        //            action: #selector(dismiss(_:)))
-        
-         let button = UIButton(type: .custom)
-         button.setImage(UIImage(named: "ic_backArrow"), for: .normal)
-         button.addTarget(self, action:#selector(dismiss(_:)), for: .touchUpInside)
-        
-         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 15)
-        
-         button.frame = CGRect(x: 0, y: 0, width: 53, height: 31)
-         let label = UILabel(frame: CGRect(x: 25, y: 5, width: 50, height: 20))
-         label.font = UIFont(name: "AktivGrotesk", size: 18)
-         label.text = "Back"
-         label.textColor = UIColor.blue
-         label.backgroundColor = UIColor.clear
-         button.tintColor = UIColor.blue
-         button.addSubview(label)
-         let barButton = UIBarButtonItem(customView: button)
-         navItem.leftBarButtonItem = barButton
-        
-        
-        
-        // navItem.leftBarButtonItem = closeBarButton
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "ic_backArrow"), for: .normal)
+        button.addTarget(self, action:#selector(dismiss(_:)), for: .touchUpInside)
+        button.titleLabel?.font = UIFont(name: "AktivGrotesk-Regular", size: 18)
+        button.tintColor = UIColor.blue
+        button.setTitle("Back", for: .normal)
+        button.setTitleColor(UIColor.blue, for: .normal)
+        button.sizeToFit()
+        let barButton = UIBarButtonItem(customView: button)
+        navItem.leftBarButtonItem = barButton
         navItem.leftBarButtonItem?.tintColor = UIColor.blue
         navBar.alpha = 0.0
         navBar.items = [navItem]
