@@ -138,4 +138,26 @@ extension UIImageView {
         let presentFromVC = sender.from ?? vc
         presentFromVC?.present(imageCarousel, animated: true)
     }
+
+     @objc
+  public func showImageViewer(data: ImageViewObject) {
+        let imageCarousel = ImageCarouselViewController.init(
+            sourceView: data.sourceView,
+            imageDataSource: data.dataSource,
+            //            imageLoader: sender.imageLoader ?? URLSessionImageLoader(),
+            options: [],
+            initialIndex: data.initialIndex)
+        let presentFromVC = data.fromVC
+        presentFromVC?.present(imageCarousel, animated: true)
+    }
+
+}
+
+
+
+public class ImageViewObject: NSObject {
+   public var dataSource: ImageDataSource?
+   public var initialIndex: Int = 0
+   public var sourceView: UIImageView!
+   public var fromVC : UIViewController!
 }
